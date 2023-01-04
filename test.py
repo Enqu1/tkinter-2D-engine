@@ -1,10 +1,10 @@
-import engine
+import EnquX
 
-wind = engine.engine()
+wind = EnquX.engine()
 
 dis = wind.display
 
-dis.set_mode(600, 600, False, 24)
+dis.set_mode(800, 600, False, 30)
 
 x, y = 0, 0
 
@@ -22,8 +22,8 @@ def input(event):
 
 def updateDisplay():
     dis.fill("#2ecc71")
-    rect = wind.rect.Rect(x, y, 1, 1, '#000000')
 
+    rect = wind.rect.Rect(x, y, 2, 2, colorRGB=(255, 255, 0))
     dis.drawRect(rect)
 
     dis.update()

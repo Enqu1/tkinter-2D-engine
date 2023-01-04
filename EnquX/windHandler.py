@@ -1,25 +1,28 @@
-import engine, tkinter as tk, math
+import EnquX, tkinter as tk, math
 from . import display
 
 class handler:
-    def __init__(self, engine: engine, dis: display):
+    def __init__(self, engine: EnquX, dis: display):
         self.engine = engine
         self.pixels: list = []
         self.setup = False
-        self.dis = dis
+        self.dis: display = dis
 
     def createScreen(self):
-        width = math.floor(self.dis.width / self.dis.res)
-        height = math.floor(self.dis.height / self.dis.res)
+        width = round(self.dis.width / self.dis.res)
+        height = round(self.dis.height / self.dis.res)
 
-        for x in range(width):
-            for y in range(height):
+        lenX = round(self.dis.width / width)
+        lenY = round(self.dis.height / height)
+
+        for x in range(lenX):
+            for y in range(lenY):
                 frame = tk.Frame(self.dis.root, width=width, height=height)
                 frame.grid(column=y, row=x)
 
                 self.pixels.append(frame)
 
-        self.width = width
+        self.width = lenX
         self.setup = True
 
     def setPixel(self, x: int, y: int, color: str):

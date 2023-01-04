@@ -1,9 +1,11 @@
-import engine, tkinter as tk
+import EnquX, tkinter as tk
 from . import windHandler, Event
 
 class Display:
-    def __init__(self, engine: engine):
+    def __init__(self, engine: EnquX):
         self.engine = engine
+        self.events = None
+        self.windHandler = None
 
     def __bindEvents(self):
         self.root.bind("<KeyPress>", self.events.addEvent)
@@ -43,8 +45,6 @@ class Display:
     def update(self):
         self.root.update_idletasks()
         self.root.update()
-
-        #self.events.get()
 
     def __onClosing(self):
         self.running = False
